@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block corpo %}
+<div class="col-lg-9">
+ <div class="container">
+    <h1> {{categorias.nome_categoria}} </h1>
+    <div class="row">                  
+        {% for curso in cursos %}         
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                {% if curso.imagem %}
+                <a href="#"><img class="card-img-top" src="{{ curso.imagem.url }}"alt=""></a>
+                {% else %}
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                {% endif %}
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{% url 'curso_detalhes' curso.slug %}">{{ curso.nome_curso }}</a>
+
+                </h4>
+                <p class="card-text">Categoria: {{ curso.categoria }}</p>
+
+              </div>
+              
+            </div>
+            
+        </div>  
+        {% endfor %}        
+          
+    </div>
+
+</div> 
+</div>
+
+ 
+
+{% endblock %}
+
+
+
+
+
